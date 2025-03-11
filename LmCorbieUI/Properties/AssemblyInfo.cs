@@ -34,7 +34,7 @@ using System.Runtime.InteropServices;
 
 internal static class InfoLmAssembly
 {
-    internal const string Version = "4.0.1.7";
+    internal const string Version = "4.0.1.8";
     internal const string Title = "LmCorbieUI.Vsix.Name";
     internal const string Description = "LmCorbieUI.Vsix.Description";
     internal const string Copyright = "Copyright \x00a9 2022 Lm Projetos.  Todos os direitos reservados.";

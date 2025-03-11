@@ -64,10 +64,10 @@ namespace LmCorbieUI.Controls
       this.lnkCsv.BackColor = System.Drawing.Color.Transparent;
       this.lnkCsv.ForeColor = System.Drawing.SystemColors.ControlText;
       this.lnkCsv.Image = ((System.Drawing.Image)(resources.GetObject("lnkCsv.Image")));
-      this.lnkCsv.Location = new System.Drawing.Point(3, 4);
-      this.lnkCsv.Margin = new System.Windows.Forms.Padding(3, 4, 1, 4);
+      this.lnkCsv.Location = new System.Drawing.Point(3, 3);
+      this.lnkCsv.Margin = new System.Windows.Forms.Padding(3, 3, 1, 4);
       this.lnkCsv.Name = "lnkCsv";
-      this.lnkCsv.Size = new System.Drawing.Size(20, 31);
+      this.lnkCsv.Size = new System.Drawing.Size(20, 27);
       this.lnkCsv.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
       this.lnkCsv.TabIndex = 5;
       this.lnkCsv.TabStop = false;
@@ -81,10 +81,10 @@ namespace LmCorbieUI.Controls
       this.lnkPdf.BackColor = System.Drawing.Color.Transparent;
       this.lnkPdf.ForeColor = System.Drawing.SystemColors.ControlText;
       this.lnkPdf.Image = ((System.Drawing.Image)(resources.GetObject("lnkPdf.Image")));
-      this.lnkPdf.Location = new System.Drawing.Point(25, 4);
-      this.lnkPdf.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
+      this.lnkPdf.Location = new System.Drawing.Point(25, 3);
+      this.lnkPdf.Margin = new System.Windows.Forms.Padding(1, 3, 1, 4);
       this.lnkPdf.Name = "lnkPdf";
-      this.lnkPdf.Size = new System.Drawing.Size(20, 31);
+      this.lnkPdf.Size = new System.Drawing.Size(20, 27);
       this.lnkPdf.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
       this.lnkPdf.TabIndex = 6;
       this.lnkPdf.TabStop = false;
@@ -98,10 +98,10 @@ namespace LmCorbieUI.Controls
       this.lnkColunas.BackColor = System.Drawing.Color.Transparent;
       this.lnkColunas.ForeColor = System.Drawing.SystemColors.ControlText;
       this.lnkColunas.Image = ((System.Drawing.Image)(resources.GetObject("lnkColunas.Image")));
-      this.lnkColunas.Location = new System.Drawing.Point(60, 4);
-      this.lnkColunas.Margin = new System.Windows.Forms.Padding(0, 4, 1, 4);
+      this.lnkColunas.Location = new System.Drawing.Point(60, 3);
+      this.lnkColunas.Margin = new System.Windows.Forms.Padding(0, 3, 1, 4);
       this.lnkColunas.Name = "lnkColunas";
-      this.lnkColunas.Size = new System.Drawing.Size(20, 31);
+      this.lnkColunas.Size = new System.Drawing.Size(20, 27);
       this.lnkColunas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
       this.lnkColunas.TabIndex = 8;
       this.lnkColunas.TabStop = false;
@@ -115,10 +115,10 @@ namespace LmCorbieUI.Controls
       this.lnkResraurarGrid.BackColor = System.Drawing.Color.Transparent;
       this.lnkResraurarGrid.ForeColor = System.Drawing.SystemColors.ControlText;
       this.lnkResraurarGrid.Image = ((System.Drawing.Image)(resources.GetObject("lnkResraurarGrid.Image")));
-      this.lnkResraurarGrid.Location = new System.Drawing.Point(82, 4);
-      this.lnkResraurarGrid.Margin = new System.Windows.Forms.Padding(1, 4, 3, 4);
+      this.lnkResraurarGrid.Location = new System.Drawing.Point(82, 3);
+      this.lnkResraurarGrid.Margin = new System.Windows.Forms.Padding(1, 3, 3, 4);
       this.lnkResraurarGrid.Name = "lnkResraurarGrid";
-      this.lnkResraurarGrid.Size = new System.Drawing.Size(20, 31);
+      this.lnkResraurarGrid.Size = new System.Drawing.Size(20, 27);
       this.lnkResraurarGrid.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
       this.lnkResraurarGrid.TabIndex = 13;
       this.lnkResraurarGrid.TabStop = false;
@@ -151,7 +151,7 @@ namespace LmCorbieUI.Controls
       this.pnlGrid.Location = new System.Drawing.Point(0, 0);
       this.pnlGrid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.pnlGrid.Name = "pnlGrid";
-      this.pnlGrid.Size = new System.Drawing.Size(447, 202);
+      this.pnlGrid.Size = new System.Drawing.Size(391, 207);
       this.pnlGrid.TabIndex = 0;
       // 
       // lblMessage
@@ -217,7 +217,7 @@ namespace LmCorbieUI.Controls
       this.Grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
       this.Grid.RowTemplate.Height = 25;
       this.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.Grid.Size = new System.Drawing.Size(445, 178);
+      this.Grid.Size = new System.Drawing.Size(389, 183);
       this.Grid.TabIndex = 1;
       this.Grid.UseSelectable = true;
       this.Grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellClick);
@@ -236,9 +236,9 @@ namespace LmCorbieUI.Controls
       this.flpRodape.AutoScroll = true;
       this.flpRodape.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(215)))), ((int)(((byte)(242)))));
       this.flpRodape.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.flpRodape.Location = new System.Drawing.Point(0, 178);
+      this.flpRodape.Location = new System.Drawing.Point(0, 183);
       this.flpRodape.Name = "flpRodape";
-      this.flpRodape.Size = new System.Drawing.Size(445, 22);
+      this.flpRodape.Size = new System.Drawing.Size(389, 22);
       this.flpRodape.TabIndex = 4;
       this.flpRodape.UseCustomBackColor = true;
       this.flpRodape.WrapContents = false;
@@ -255,18 +255,17 @@ namespace LmCorbieUI.Controls
       this.flpBotoes.Controls.Add(this.lblSep3);
       this.flpBotoes.Controls.Add(this.lblTotal);
       this.flpBotoes.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.flpBotoes.Location = new System.Drawing.Point(0, 202);
-      this.flpBotoes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 2);
+      this.flpBotoes.Location = new System.Drawing.Point(0, 207);
       this.flpBotoes.Name = "flpBotoes";
-      this.flpBotoes.Size = new System.Drawing.Size(447, 38);
+      this.flpBotoes.Size = new System.Drawing.Size(391, 33);
       this.flpBotoes.TabIndex = 0;
       // 
       // lmDivisor
       // 
       this.lmDivisor.AutoSize = true;
       this.lmDivisor.FontWeight = LmCorbieUI.Design.LmLabelWeight.Bold;
-      this.lmDivisor.Location = new System.Drawing.Point(46, 10);
-      this.lmDivisor.Margin = new System.Windows.Forms.Padding(0, 10, 0, 4);
+      this.lmDivisor.Location = new System.Drawing.Point(46, 7);
+      this.lmDivisor.Margin = new System.Windows.Forms.Padding(0, 7, 0, 4);
       this.lmDivisor.Name = "lmDivisor";
       this.lmDivisor.Size = new System.Drawing.Size(14, 19);
       this.lmDivisor.TabIndex = 12;
@@ -286,8 +285,8 @@ namespace LmCorbieUI.Controls
       this.txtProcurar.IconF7 = null;
       this.txtProcurar.IconToolTipText = null;
       this.txtProcurar.Lines = new string[0];
-      this.txtProcurar.Location = new System.Drawing.Point(108, 4);
-      this.txtProcurar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.txtProcurar.Location = new System.Drawing.Point(108, 3);
+      this.txtProcurar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 4);
       this.txtProcurar.MaxLength = 32767;
       this.txtProcurar.Name = "txtProcurar";
       this.txtProcurar.PasswordChar = '\0';
@@ -299,7 +298,7 @@ namespace LmCorbieUI.Controls
       this.txtProcurar.ShortcutsEnabled = true;
       this.txtProcurar.ShowClearButton = true;
       this.txtProcurar.ShowIcon = true;
-      this.txtProcurar.Size = new System.Drawing.Size(130, 31);
+      this.txtProcurar.Size = new System.Drawing.Size(130, 27);
       this.txtProcurar.TabIndex = 9;
       this.txtProcurar.UnderlinedStyle = true;
       this.txtProcurar.UseSelectable = true;
@@ -314,8 +313,8 @@ namespace LmCorbieUI.Controls
       // 
       this.lblSep3.AutoSize = true;
       this.lblSep3.FontWeight = LmCorbieUI.Design.LmLabelWeight.Bold;
-      this.lblSep3.Location = new System.Drawing.Point(241, 10);
-      this.lblSep3.Margin = new System.Windows.Forms.Padding(0, 10, 0, 4);
+      this.lblSep3.Location = new System.Drawing.Point(241, 7);
+      this.lblSep3.Margin = new System.Windows.Forms.Padding(0, 7, 0, 4);
       this.lblSep3.Name = "lblSep3";
       this.lblSep3.Size = new System.Drawing.Size(14, 19);
       this.lblSep3.TabIndex = 11;
@@ -324,8 +323,8 @@ namespace LmCorbieUI.Controls
       // lblTotal
       // 
       this.lblTotal.AutoSize = true;
-      this.lblTotal.Location = new System.Drawing.Point(255, 10);
-      this.lblTotal.Margin = new System.Windows.Forms.Padding(0, 10, 3, 4);
+      this.lblTotal.Location = new System.Drawing.Point(255, 7);
+      this.lblTotal.Margin = new System.Windows.Forms.Padding(0, 7, 3, 4);
       this.lblTotal.Name = "lblTotal";
       this.lblTotal.Size = new System.Drawing.Size(105, 19);
       this.lblTotal.TabIndex = 10;
@@ -339,7 +338,7 @@ namespace LmCorbieUI.Controls
       this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
       this.Margin = new System.Windows.Forms.Padding(0);
       this.Name = "LmDataGridView";
-      this.Size = new System.Drawing.Size(447, 240);
+      this.Size = new System.Drawing.Size(391, 240);
       this.Load += new System.EventHandler(this.LmDataGridView_Load);
       ((System.ComponentModel.ISupportInitialize)(this.lnkCsv)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.lnkPdf)).EndInit();
