@@ -3,12 +3,14 @@ using iTextSharp.text.pdf;
 using LmCorbieUI.Controls;
 using LmCorbieUI.Design;
 using LmCorbieUI.LmForms;
+using Microsoft.VisualStudio.OLE.Interop;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -928,7 +930,7 @@ namespace LmCorbieUI.Metodos {
           }
         }
 
-        CriarTabela(dgv.Grid, colunas, pathName, dadosEmpresa, logoEmpresa, titulo, numeroColunas, retrato);
+        CriarTabela(dgv, colunas, pathName, dadosEmpresa, logoEmpresa, titulo, numeroColunas, retrato);
 
         InserirPagNumPDF(pathName, usuario, retrato);
 
@@ -961,7 +963,7 @@ namespace LmCorbieUI.Metodos {
       }
     }
 
-    private static void CriarTabela(LmDataGridMini dgv,
+    private static void CriarTabela(LmDataGridView dgv,
         List<DataGridViewColumn> colunas, string pathName, string dadosEmpresa,
         System.Drawing.Image logoEmpresa, string titulo, int numeroColunas, bool retrato) {
       try {
@@ -991,7 +993,7 @@ namespace LmCorbieUI.Metodos {
         CriarCabecalho(pdfCabecalho, dadosEmpresa, logoEmpresa, titulo);
         CriarCabecalhoTabela(colunas, pdfTable);
 
-        foreach (DataGridViewRow row in dgv.Rows) {
+        foreach (DataGridViewRow row in dgv.Grid.Rows) {
           List<PdfPCell> pdfPCells = new List<PdfPCell>();
           foreach (DataGridViewColumn c in colunas) {
             int hrAlignment = 0;
@@ -1035,6 +1037,72 @@ namespace LmCorbieUI.Metodos {
               HorizontalAlignment = hrAlignment,
               VerticalAlignment = Element.ALIGN_MIDDLE,
             };
+
+            pdfPCells.Add(cell);
+          }
+
+          foreach (var cell in pdfPCells) {
+            pdfTable.AddCell(cell);
+          }
+        }
+
+        if (dgv.MostrarTotalizador) {
+          List<PdfPCell> pdfPCells = new List<PdfPCell>();
+          foreach (DataGridViewColumn col in colunas) {
+            int hrAlignment = 0;
+
+            switch (col.DefaultCellStyle.Alignment) {
+              case DataGridViewContentAlignment.NotSet:
+              hrAlignment = Element.ALIGN_UNDEFINED;
+              break;
+              case DataGridViewContentAlignment.TopLeft:
+              hrAlignment = Element.ALIGN_LEFT;
+              break;
+              case DataGridViewContentAlignment.TopCenter:
+              hrAlignment = Element.ALIGN_CENTER;
+              break;
+              case DataGridViewContentAlignment.TopRight:
+              hrAlignment = Element.ALIGN_RIGHT;
+              break;
+              case DataGridViewContentAlignment.MiddleLeft:
+              hrAlignment = Element.ALIGN_LEFT;
+              break;
+              case DataGridViewContentAlignment.MiddleCenter:
+              hrAlignment = Element.ALIGN_CENTER;
+              break;
+              case DataGridViewContentAlignment.MiddleRight:
+              hrAlignment = Element.ALIGN_RIGHT;
+              break;
+              case DataGridViewContentAlignment.BottomLeft:
+              hrAlignment = Element.ALIGN_LEFT;
+              break;
+              case DataGridViewContentAlignment.BottomCenter:
+              hrAlignment = Element.ALIGN_CENTER;
+              break;
+              case DataGridViewContentAlignment.BottomRight:
+              hrAlignment = Element.ALIGN_RIGHT;
+              break;
+              default:
+              break;
+            }
+
+            RodapeTotal? rdp = dgv.RodapeColunasTotal.FirstOrDefault(x => x.NomeColuna == col.Name);
+            var value = rdp?.Valor;
+
+            if (string.IsNullOrEmpty(value)) {
+              var rdpLabel = dgv.flpRodape.Controls.OfType<LmLabel>().FirstOrDefault(x => x.Name == $"rdp" + col.Name);
+
+              if (rdpLabel != null) {
+                value = rdpLabel.Text;
+              }
+            }
+
+            PdfPCell cell = new PdfPCell(new Phrase(value, blackFont)) {
+              Border = PdfPCell.LEFT_BORDER | PdfPCell.RIGHT_BORDER | PdfPCell.TOP_BORDER | PdfPCell.BOTTOM_BORDER,
+              HorizontalAlignment = hrAlignment,
+              VerticalAlignment = Element.ALIGN_MIDDLE,
+            };
+
 
             pdfPCells.Add(cell);
           }

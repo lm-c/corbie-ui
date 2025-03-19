@@ -247,7 +247,7 @@ namespace LmCorbieUI.Controls {
 
     private RodapeTotal[] rodapeColunasTotal = null;
     [Browsable(false)]
-    private RodapeTotal[] RodapeColunasTotal {
+    internal RodapeTotal[] RodapeColunasTotal {
       get { return rodapeColunasTotal; }
       set {
         rodapeColunasTotal = value;
@@ -526,6 +526,8 @@ namespace LmCorbieUI.Controls {
       ListSortDirection direction = Grid.Columns[e.ColumnIndex].HeaderText.Contains(setaCima) ? ListSortDirection.Descending : ListSortDirection.Ascending;
       ColunaOrdenacaoGrid = Grid.Columns[e.ColumnIndex].Name + "^" + ((int)direction).ToString();
 
+      SalvarConfiguracao?.Invoke(Grid, new EventArgs());
+
       System.Threading.Thread t1 = new System.Threading.Thread(() => {
         PersonalizarGridSorted();
       }) { IsBackground = true };
@@ -558,7 +560,9 @@ namespace LmCorbieUI.Controls {
       Controles.ImprimirDGV(lnkPdf, this, Text, InfoDefaultUI.UsuarioLogado_Login, InfoDefaultUI.DadosEmpresa, InfoDefaultUI.LogoEmpresa,
           TituloRelatorio, ColunasOcultasImpressGrid, true, out string colunasOcultas);
 
-      //ColunasOcultasImpressGrid = colunasOcultas;
+      ColunasOcultasImpressGrid = colunasOcultas;
+
+      SalvarConfiguracao?.Invoke(Grid, new EventArgs());
     }
 
     private void LnkImprimir_Click(object sender, EventArgs e) {
@@ -566,6 +570,8 @@ namespace LmCorbieUI.Controls {
           TituloRelatorio, ColunasOcultasImpressGrid, false, out string colunasOcultas);
 
       ColunasOcultasImpressGrid = colunasOcultas;
+
+      SalvarConfiguracao?.Invoke(Grid, new EventArgs());
     }
 
     private void LnkColunas_Click(object sender, EventArgs e) {
@@ -588,6 +594,10 @@ namespace LmCorbieUI.Controls {
 
       ReposicionarColunasGrid(ColunasBloqueadasGrid);
       CloseMsgGrid();
+
+      PosColunasGrid = OrdemAtualColunas();
+
+      SalvarConfiguracao?.Invoke(Grid, new EventArgs());
     }
 
     private void TmrInternal_Tick(object sender, EventArgs e) {
