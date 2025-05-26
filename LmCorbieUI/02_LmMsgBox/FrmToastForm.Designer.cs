@@ -27,7 +27,10 @@
       this.ptbIcon = new System.Windows.Forms.PictureBox();
       this.lblMessage = new System.Windows.Forms.Label();
       this.btnClose = new System.Windows.Forms.Button();
+      this.pnlBackground = new System.Windows.Forms.Panel();
+      this.pnlProgress = new System.Windows.Forms.Panel();
       ((System.ComponentModel.ISupportInitialize)(this.ptbIcon)).BeginInit();
+      this.pnlBackground.SuspendLayout();
       this.SuspendLayout();
       // 
       // ptbIcon
@@ -79,26 +82,48 @@
       this.btnClose.MouseEnter += new System.EventHandler(this.BtnClose_MouseEnter);
       this.btnClose.MouseLeave += new System.EventHandler(this.BtnClose_MouseLeave);
       // 
+      // pnlBackground
+      // 
+      this.pnlBackground.Controls.Add(this.lblMessage);
+      this.pnlBackground.Controls.Add(this.ptbIcon);
+      this.pnlBackground.Controls.Add(this.btnClose);
+      this.pnlBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.pnlBackground.Location = new System.Drawing.Point(0, 6);
+      this.pnlBackground.Name = "pnlBackground";
+      this.pnlBackground.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+      this.pnlBackground.Size = new System.Drawing.Size(210, 60);
+      this.pnlBackground.TabIndex = 2;
+      // 
+      // pnlProgress
+      // 
+      this.pnlProgress.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+      this.pnlProgress.Dock = System.Windows.Forms.DockStyle.Top;
+      this.pnlProgress.Location = new System.Drawing.Point(0, 0);
+      this.pnlProgress.Name = "pnlProgress";
+      this.pnlProgress.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
+      this.pnlProgress.Size = new System.Drawing.Size(210, 6);
+      this.pnlProgress.TabIndex = 3;
+      // 
       // FrmToastForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.ControlDark;
-      this.ClientSize = new System.Drawing.Size(210, 60);
-      this.Controls.Add(this.btnClose);
-      this.Controls.Add(this.lblMessage);
-      this.Controls.Add(this.ptbIcon);
+      this.ClientSize = new System.Drawing.Size(210, 66);
+      this.Controls.Add(this.pnlBackground);
+      this.Controls.Add(this.pnlProgress);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Name = "FrmToastForm";
-      this.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
       this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
       this.Text = "FrmToastForm";
       this.TopMost = true;
+      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmToastForm_FormClosing);
       ((System.ComponentModel.ISupportInitialize)(this.ptbIcon)).EndInit();
+      this.pnlBackground.ResumeLayout(false);
+      this.pnlBackground.PerformLayout();
       this.ResumeLayout(false);
-      this.PerformLayout();
 
     }
 
@@ -107,5 +132,7 @@
     private System.Windows.Forms.PictureBox ptbIcon;
     private System.Windows.Forms.Label lblMessage;
     private System.Windows.Forms.Button btnClose;
+    private System.Windows.Forms.Panel pnlBackground;
+    private System.Windows.Forms.Panel pnlProgress;
   }
 }
