@@ -4,11 +4,10 @@ using System.Windows.Forms;
 namespace LmCorbieUI {
   public class Toast {
 
-    static Bitmap defImage = new Bitmap(15, 15);
     public static void Show(string message) {
       var backColor = Color.FromArgb(250, 248, 240);
       var foreColor = Color.FromArgb(20, 22, 30);
-      var icon = defImage;
+      var icon = new Bitmap(15, 15);
       FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
       GetPosition(toast);
       toast.Show();
@@ -53,7 +52,7 @@ namespace LmCorbieUI {
     public static void Black(string message) {
       var backColor = Color.FromArgb(50, 48, 40);
       var foreColor = Color.FromArgb(250, 248, 240);
-      var icon = defImage;
+      var icon = new Bitmap(15, 15);
       FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
       GetPosition(toast);
       toast.Show();
