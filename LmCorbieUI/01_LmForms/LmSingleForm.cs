@@ -82,6 +82,9 @@ namespace LmCorbieUI.LmForms {
     [Browsable(true)]
     public bool Movimentar { get; set; } = true;
 
+    [Browsable(true)]
+    public bool ExpandButton { get; set; } = false;
+
     /// <summary>
     /// Nome do controle usado como Chave primaria
     /// </summary>
@@ -185,6 +188,9 @@ namespace LmCorbieUI.LmForms {
         if (HelpButton)
           AddWindowButton(WindowButtons.Help);
 
+        if (ExpandButton)
+          AddWindowButton(WindowButtons.Expand);
+
         //System.Threading.Thread t = new System.Threading.Thread(() => { UpdateWindowButtonPosition(); }) { IsBackground = true };
         //t.Start();
         UpdateWindowButtonPosition();
@@ -200,7 +206,7 @@ namespace LmCorbieUI.LmForms {
       // Verifica se a propriedade Movable está habilitada antes de permitir o movimento da janela
       if (e.Button == MouseButtons.Left) {
         if (WindowState == FormWindowState.Maximized || Movimentar) return;
-        
+
         ReleaseCapture();
         SendMessage(Handle, (int)WinApi.Messages.WM_NCLBUTTONDOWN, (int)WinApi.Messages.WM_DESTROY, 0);
       }
@@ -373,12 +379,15 @@ namespace LmCorbieUI.LmForms {
 
     public delegate void ButClick(object sender, EventArgs e);
     public event ButClick ClickHelp;
+    public event ButClick ClickExpand;
+    public event ButClick ClickEmbed;
 
     private enum WindowButtons {
       Minimize,
       Maximize,
       Close,
       Help,
+      Expand,
     }
 
     private Dictionary<WindowButtons, LmFormButton> windowButtonList;
@@ -414,6 +423,17 @@ namespace LmCorbieUI.LmForms {
           this.toolTip1.SetToolTip(newButton, "Rest. Tamanho");
           newButton.Font = fntWeb;
           newButton.Text = "2";
+        }
+      } else if (button == WindowButtons.Expand) {
+        var fntWeb3 = new Font("Webdings 3", 9.25f);
+        if (this.Parent != null && this.Parent.Name == "pnlMain" && this.Parent is LmPanel) {
+          this.toolTip1.SetToolTip(newButton, "Liberar Formulário");
+          newButton.Font = fntWeb3;
+          newButton.Text = "F";
+        } else {
+          this.toolTip1.SetToolTip(newButton, "Encaixar Formulário ao Lado");
+          newButton.Font = fntWeb3;
+          newButton.Text = "G";
         }
       }
 
@@ -452,7 +472,23 @@ namespace LmCorbieUI.LmForms {
               this.Top = 0;
           }
         } else if (btnFlag == WindowButtons.Help) {
-          ClickHelp?.Invoke(btn, e);
+          ClickHelp?.Invoke(this, e);
+        } else if (btnFlag == WindowButtons.Expand) {
+          var fntWeb3 = new Font("Webdings 3", 9.25f);
+
+          if (this.Parent != null && this.Parent.Name == "pnlMain" && this.Parent is LmPanel) {
+            ClickExpand?.Invoke(this, e);
+
+            this.toolTip1.SetToolTip(btn, "Encaixar Formulário ao Lado");
+            btn.Font = fntWeb3;
+            btn.Text = "G";
+          } else {
+            ClickEmbed?.Invoke(this, e);
+
+            this.toolTip1.SetToolTip(btn, "Liberar Formulário");
+            btn.Font = fntWeb3;
+            btn.Text = "F";
+          }
         }
       }
     }
@@ -461,9 +497,8 @@ namespace LmCorbieUI.LmForms {
       if (!ControlBox) return;
 
       System.Threading.Thread.Sleep(100);
-      Dictionary<int, WindowButtons> priorityOrder = new Dictionary<int, WindowButtons>(3) {
-                { 0, WindowButtons.Close }, { 1, WindowButtons.Maximize }, { 2, WindowButtons.Minimize },
-                { 3, WindowButtons.Help }};
+      Dictionary<int, WindowButtons> priorityOrder = new Dictionary<int, WindowButtons>(4) {
+                { 0, WindowButtons.Close }, { 1, WindowButtons.Maximize }, { 2, WindowButtons.Minimize }, { 3, WindowButtons.Help }, { 4, WindowButtons.Expand }};
 
       Point firstButtonLocation = new Point(ClientRectangle.Width - 32, 2);
       int lastDrawedButtonPosition = firstButtonLocation.X - 30;
