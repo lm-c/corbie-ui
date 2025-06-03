@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
+[assembly: ComVisible(true)]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,10 +31,11 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion(InfoLmAssembly.Version)]
 [assembly: AssemblyFileVersion(InfoLmAssembly.Version)]
+[assembly: Guid("FAE04EC0-301F-11D3-BF4B-00C04F79EFBC")]
 
 internal static class InfoLmAssembly
 {
-    internal const string Version = "4.0.1.9";
+    internal const string Version = "4.0.3.0";
     internal const string Title = "LmCorbieUI.Vsix.Name";
     internal const string Description = "LmCorbieUI.Vsix.Description";
     internal const string Copyright = "Copyright \x00a9 2022 Lm Projetos.  Todos os direitos reservados.";

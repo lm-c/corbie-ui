@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection;
-
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace LmCorbieUI.Controls {
@@ -17,7 +17,10 @@ namespace LmCorbieUI.Controls {
   [ToolboxBitmap(typeof(TextBox))]
   [DefaultEvent("TextChanged")]
   [Designer(typeof(LmCorbieUI.Controls.Design.LmTextBoxDesign))]
+  [ComVisible(true)]
+  [ProgId(LM_FRAMEWORK_PROGID)]
   public partial class LmTextBox : UserControl, ILmControl {
+    public const string LM_FRAMEWORK_PROGID = "LmFramework.Axion.Plugin";
     #region Construtor
 
     public LmTextBox() {
@@ -573,6 +576,11 @@ namespace LmCorbieUI.Controls {
       AcceptsTabChanged?.Invoke(this, e);
     }
 
+    private void BaseTextBox_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+      if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Escape)
+        e.IsInputKey = true;
+    }
+
     private void BaseTextBoxSizeChanged(object sender, EventArgs e) {
       base.OnSizeChanged(e);
     }
@@ -589,6 +597,7 @@ namespace LmCorbieUI.Controls {
     private void BaseTextBoxClientSizeChanged(object sender, EventArgs e) {
       base.OnClientSizeChanged(e);
     }
+
 
     private void BaseTextBoxClick(object sender, EventArgs e) {
       base.OnClick(e);
@@ -633,11 +642,13 @@ namespace LmCorbieUI.Controls {
             e.KeyChar != (char)3 && e.KeyChar != (char)1 && e.KeyChar != (char)22 && e.KeyChar != (char)24 &&
             e.KeyChar != (char)43 && e.KeyChar != (char)45)) {
           e.Handled = true;
-        };
+        }
+        ;
         break;
         case LmValueType.Hora:
         if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)3 && e.KeyChar != (char)1
-            && e.KeyChar != (char)72 && e.KeyChar != (char)104 && e.KeyChar != (char)22 && e.KeyChar != (char)24) { e.Handled = true; };
+            && e.KeyChar != (char)72 && e.KeyChar != (char)104 && e.KeyChar != (char)22 && e.KeyChar != (char)24) { e.Handled = true; }
+        ;
         break;
         case LmValueType.Num_Inteiro:
         if (e.KeyChar == (char)45 &&
@@ -647,7 +658,8 @@ namespace LmCorbieUI.Controls {
         }
         if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)45 && e.KeyChar != (char)3 && e.KeyChar != (char)1 && e.KeyChar != (char)22 && e.KeyChar != (char)24) {
           e.Handled = true;
-        };
+        }
+        ;
 
         break;
         case LmValueType.Num_Real:
@@ -677,12 +689,14 @@ namespace LmCorbieUI.Controls {
         case LmValueType.Fone:
         if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)3 && e.KeyChar != (char)1 && e.KeyChar != (char)22 && e.KeyChar != (char)24) {
           e.Handled = true;
-        };
+        }
+        ;
         break;
         case LmValueType.Cpf_Cnpj:
         if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)3 && e.KeyChar != (char)1 && e.KeyChar != (char)22 && e.KeyChar != (char)24) {
           e.Handled = true;
-        };
+        }
+        ;
         break;
 
         default:
@@ -859,6 +873,13 @@ namespace LmCorbieUI.Controls {
 
     #region -> Overridden methods
 
+    protected override bool IsInputKey(Keys keyData) {
+      if (keyData == Keys.Enter || keyData == Keys.Escape)
+        return true;
+
+      return base.IsInputKey(keyData);
+    }
+
     //protected override void WndProc(ref Message m)
     //{
     //    base.WndProc(ref m);
@@ -959,8 +980,7 @@ namespace LmCorbieUI.Controls {
           this.BackColor = this.baseTextBox.BackColor = LmCor.Bc_Txt_Disabled;
         else
           this.BackColor = this.baseTextBox.BackColor = LmCor.Bc_Txt_Normal;
-      }
-      else this.BackColor = this.baseTextBox.BackColor = BackColor;
+      } else this.BackColor = this.baseTextBox.BackColor = BackColor;
     }
 
     private void DrawTextPrompt(Graphics g) {
@@ -1175,39 +1195,39 @@ namespace LmCorbieUI.Controls {
       //if (ButtonClick != null) ButtonClick(this, e);
       ButtonClickF7?.Invoke(this, e);
 
-      var ctrl = ((Control)sender).Parent;
-      if (ctrl is LmTextBox && ((LmTextBox)ctrl).valor == LmValueType.Data) {
+      //var ctrl = ((Control)sender);
+      if (this.valor == LmValueType.Data) {
         DateTime dateTime;
-        if (!DateTime.TryParse(((LmTextBox)ctrl).Text.FormatarData(), out dateTime))
+        if (!DateTime.TryParse(this.Text.FormatarData(), out dateTime))
           dateTime = DateTime.Now;
 
         FrmMontCalendar frm = new FrmMontCalendar(dateTime);
         Rectangle areaTrabalho = Screen.GetWorkingArea(this);
 
-        var ptScreen = ctrl.PointToScreen(Point.Empty);
+        var ptScreen = this.PointToScreen(Point.Empty);
 
         int locX = ptScreen.X;
         int locY = ptScreen.Y + Height;
 
         if (locX > areaTrabalho.Right - frm.Width && locY > areaTrabalho.Bottom - frm.Height) {
-          locX = ptScreen.X - (frm.Width - ((LmTextBox)ctrl).Width);
+          locX = ptScreen.X - (frm.Width - this.Width);
           locY = ptScreen.Y - frm.Height;
         } else if (locX > areaTrabalho.Right - frm.Width) {
-          locX = ptScreen.X - (frm.Width - ((LmTextBox)ctrl).Width);
+          locX = ptScreen.X - (frm.Width - this.Width);
         } else if (locY > areaTrabalho.Bottom - frm.Height) {
           locY = ptScreen.Y - frm.Height;
         }
 
         frm.Location = new Point(locX, locY);
         if (frm.ShowDialog() == DialogResult.OK)
-          ((LmTextBox)ctrl).Text = frm.date.ToShortDateString();
-      } else if (ctrl is LmTextBox && (((LmTextBox)ctrl).valor == LmValueType.ComboBox || ((LmTextBox)ctrl).valor == LmValueType.ComboBox_Enum)) {
-        int largura = ((LmTextBox)ctrl).Width;
-        FrmCaixaComboBox frm = new FrmCaixaComboBox(CmbDados, SelectedItem, SelectedValue, ((LmTextBox)ctrl).valor, largura);
+          this.Text = frm.date.ToShortDateString();
+      } else if ((this.valor == LmValueType.ComboBox || this.valor == LmValueType.ComboBox_Enum)) {
+        int largura = this.Width;
+        FrmCaixaComboBox frm = new FrmCaixaComboBox(CmbDados, SelectedItem, SelectedValue, this.valor, largura);
         Rectangle areaTrabalho = Screen.GetWorkingArea(this);
 
-        var ptScreen = ctrl.PointToScreen(Point.Empty);
-        ptScreen.Y += ((LmTextBox)ctrl).Height;
+        var ptScreen = this.PointToScreen(Point.Empty);
+        ptScreen.Y += this.Height;
 
         bool paraBaixo = areaTrabalho.Bottom - ptScreen.Y < ptScreen.Y ? false : true;
 
@@ -1228,7 +1248,7 @@ namespace LmCorbieUI.Controls {
         int posY = ptScreen.Y;
 
         if (paraBaixo || (!paraBaixo && ladoMenor > frm.Height)) {
-          posY = ptScreen.Y - ((LmTextBox)ctrl).Height;
+          posY = ptScreen.Y - this.Height;
         } else if (!paraBaixo) {
           posY = ptScreen.Y - frm.Height;
 
@@ -1239,13 +1259,13 @@ namespace LmCorbieUI.Controls {
         frm.Location = new Point(posX, posY);
 
         if (frm.ShowDialog() == DialogResult.OK) {
-          if (((LmTextBox)ctrl).selectedItem != frm._selectedItem)
-            ((LmTextBox)ctrl).selectedItem = this.SelectedItem = frm._selectedItem;
+          if (this.selectedItem != frm._selectedItem)
+            this.selectedItem = this.SelectedItem = frm._selectedItem;
 
-          if (((LmTextBox)ctrl).selectedValue != frm._selectedValue)
-            ((LmTextBox)ctrl).selectedValue = this.SelectedValue = frm._selectedValue;
+          if (this.selectedValue != frm._selectedValue)
+            this.selectedValue = this.SelectedValue = frm._selectedValue;
 
-          ((LmTextBox)ctrl).Text = frm._displayText;
+          this.Text = frm._displayText;
         }
       }
 

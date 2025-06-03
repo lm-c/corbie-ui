@@ -120,10 +120,10 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnClearButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAACTSURBVDhPzZJBCgIxDADr8/SgnvSmD1HxBfsCPyqo6IxsINC6FARxYAhJm7bspvwFMzzh6p3V
-        rPGA7quw8Yk33FpImFt33QMqvDE2GDcoudG4xCYLvKIbH3gZo7n1OU6SDwi7GoMBc7N5F3uMp4bmO5wk
-        N/rU8xjN7/jxgN6v3ZyDr/6zk3NEJ6mFddebE/ZLSnkB23I6VUtA5noAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABGdBTUEAALGPC/xhBQAAAJNJREFUOE/N
+        kkEKAjEMAOvz9KCe9KYPUfEF+wI/KqjojGwg0LoUBHFgCEmbtuym/AUzPOHqndWs8YDuq7DxiTfcWkiY
+        W3fdAyq8MTYYNyi50bjEJgu8ohsfeBmjufU5TpIPCLsagwFzs3kXe4ynhuY7nCQ3+tTzGM3v+PGA3q/d
+        nIOv/rOTc0QnqYV115sT9ktKeQHbcjpVS0DmegAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
