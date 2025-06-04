@@ -1,7 +1,7 @@
 ﻿
 namespace LmCorbieUI
 {
-    partial class LmImputBox
+    partial class LmInputBox
     {
         /// <summary>
         /// Required designer variable.
@@ -30,12 +30,12 @@ namespace LmCorbieUI
         private void InitializeComponent()
         {
       this.components = new System.ComponentModel.Container();
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LmImputBox));
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LmInputBox));
       this.lblTitulo = new LmCorbieUI.Controls.LmLabel();
       this.lblDesc = new LmCorbieUI.Controls.LmLabel();
-      this.txt = new LmCorbieUI.Controls.LmTextBox();
-      this.btnConfirmar = new LmCorbieUI.Controls.LmButton();
       this.btnCancelar = new LmCorbieUI.Controls.LmButton();
+      this.btnConfirmar = new LmCorbieUI.Controls.LmButton();
+      this.txt = new LmCorbieUI.Controls.LmTextBox();
       this.SuspendLayout();
       // 
       // lblTitulo
@@ -57,6 +57,40 @@ namespace LmCorbieUI
       this.lblDesc.Size = new System.Drawing.Size(64, 19);
       this.lblDesc.TabIndex = 1;
       this.lblDesc.Text = "lmLabel2";
+      // 
+      // btnCancelar
+      // 
+      this.btnCancelar.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnCancelar.BorderRadius = 15;
+      this.btnCancelar.BorderSize = 0;
+      this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
+      this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.btnCancelar.Location = new System.Drawing.Point(181, 75);
+      this.btnCancelar.Name = "btnCancelar";
+      this.btnCancelar.Size = new System.Drawing.Size(94, 26);
+      this.btnCancelar.TabIndex = 2;
+      this.btnCancelar.Text = "Cancelar";
+      this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btnCancelar.UseVisualStyleBackColor = false;
+      this.btnCancelar.Visible = false;
+      // 
+      // btnConfirmar
+      // 
+      this.btnConfirmar.BorderColor = System.Drawing.Color.PaleVioletRed;
+      this.btnConfirmar.BorderRadius = 15;
+      this.btnConfirmar.BorderSize = 0;
+      this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.Image")));
+      this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.btnConfirmar.Location = new System.Drawing.Point(81, 75);
+      this.btnConfirmar.Name = "btnConfirmar";
+      this.btnConfirmar.Size = new System.Drawing.Size(94, 26);
+      this.btnConfirmar.TabIndex = 1;
+      this.btnConfirmar.Text = " Confirmar";
+      this.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btnConfirmar.UseVisualStyleBackColor = false;
+      this.btnConfirmar.Visible = false;
       // 
       // txt
       // 
@@ -92,43 +126,10 @@ namespace LmCorbieUI
       this.txt.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
       this.txt.ButtonClickF7 += new LmCorbieUI.Controls.LmTextBox.ButClick(this.Txt_ButtonClickF7);
       this.txt.ButtonClickF8 += new LmCorbieUI.Controls.LmTextBox.ButClick(this.Txt_ButtonClickF8);
+      this.txt.SelectedValueChanched += new LmCorbieUI.Controls.LmTextBox.ValChange(this.Txt_SelectedValueChanched);
       this.txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
       // 
-      // btnConfirmar
-      // 
-      this.btnConfirmar.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnConfirmar.BorderRadius = 15;
-      this.btnConfirmar.BorderSize = 0;
-      this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.Image")));
-      this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.btnConfirmar.Location = new System.Drawing.Point(81, 75);
-      this.btnConfirmar.Name = "btnConfirmar";
-      this.btnConfirmar.Size = new System.Drawing.Size(94, 26);
-      this.btnConfirmar.TabIndex = 1;
-      this.btnConfirmar.Text = " Confirmar";
-      this.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.btnConfirmar.UseVisualStyleBackColor = false;
-      this.btnConfirmar.Visible = false;
-      // 
-      // btnCancelar
-      // 
-      this.btnCancelar.BorderColor = System.Drawing.Color.PaleVioletRed;
-      this.btnCancelar.BorderRadius = 15;
-      this.btnCancelar.BorderSize = 0;
-      this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
-      this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.btnCancelar.Location = new System.Drawing.Point(181, 75);
-      this.btnCancelar.Name = "btnCancelar";
-      this.btnCancelar.Size = new System.Drawing.Size(94, 26);
-      this.btnCancelar.TabIndex = 2;
-      this.btnCancelar.Text = "Cancelar";
-      this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.btnCancelar.UseVisualStyleBackColor = false;
-      this.btnCancelar.Visible = false;
-      // 
-      // LmImputBox
+      // LmInputBox
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
       this.ClientSize = new System.Drawing.Size(313, 81);
@@ -140,7 +141,7 @@ namespace LmCorbieUI
       this.Controls.Add(this.lblTitulo);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.Location = new System.Drawing.Point(0, 0);
-      this.Name = "LmImputBox";
+      this.Name = "LmInputBox";
       this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
       this.Text = "FrmImputBox";
