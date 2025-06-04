@@ -18,7 +18,7 @@ namespace LmCorbieUI {
 
       if (lmValueType == LmValueType.ComboBox) {
         this.txt.CarregarComboBox(itens);
-        txt.IconF7 = Properties.Resources.toast_info;
+        txt.IconF7 = Properties.Resources.baixo;
       }
 
       lblTitulo.Text = titulo;
