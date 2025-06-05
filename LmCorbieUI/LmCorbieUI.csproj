@@ -108,11 +108,11 @@
     <Compile Include="02_LmMsgBox\FrmToastForm.Designer.cs">
       <DependentUpon>FrmToastForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="02_LmMsgBox\LmImputBox.cs">
+    <Compile Include="02_LmMsgBox\LmInputBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="02_LmMsgBox\LmImputBox.Designer.cs">
-      <DependentUpon>LmImputBox.cs</DependentUpon>
+    <Compile Include="02_LmMsgBox\LmInputBox.Designer.cs">
+      <DependentUpon>LmInputBox.cs</DependentUpon>
     </Compile>
     <Compile Include="02_LmMsgBox\LmMsgBox.cs">
       <SubType>Form</SubType>
@@ -262,6 +262,7 @@
     <Compile Include="09_Metodos\Outros\Entidade.cs" />
     <Compile Include="09_Metodos\Outros\LmException.cs" />
     <Compile Include="09_Metodos\Outros\Web.cs" />
+    <Compile Include="77_Global\DefaultList.cs" />
     <Compile Include="77_Global\ValPadrao.cs" />
     <Compile Include="99_Configuracao\InfoDefaultUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -333,8 +334,8 @@
     <EmbeddedResource Include="02_LmMsgBox\FrmToastForm.resx">
       <DependentUpon>FrmToastForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="02_LmMsgBox\LmImputBox.resx">
-      <DependentUpon>LmImputBox.cs</DependentUpon>
+    <EmbeddedResource Include="02_LmMsgBox\LmInputBox.resx">
+      <DependentUpon>LmInputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="02_LmMsgBox\LmMsgBox.resx">
       <DependentUpon>LmMsgBox.cs</DependentUpon>
@@ -398,6 +399,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <None Include="Resources\baixo.png" />
     <None Include="Resources\toast_error.png" />
     <None Include="Resources\toast_warning.png" />
     <None Include="Resources\toast_sucess.png" />

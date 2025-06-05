@@ -226,19 +226,18 @@ namespace LmCorbieUI
             }
         }
 
-        public static string ImputBox(string message = "", string titulo = "", string textoImputPadrao = "",
-            LmValueType lmValueType = LmValueType.Alfanumerico, bool textoLongo = false, bool CentralizarForm = false)
-        {
-            LmImputBox frm = new LmImputBox(message, titulo, textoImputPadrao, lmValueType, textoLongo, CentralizarForm);
+        public static string InputBox(string message = "", string titulo = "", string textoImputPadrao = "",
+            LmValueType lmValueType = LmValueType.Alfanumerico, bool textoLongo = false, bool CentralizarForm = false, List<DefaultObject> itens = null) {
+            LmInputBox frm = new LmInputBox(message, titulo, textoImputPadrao, lmValueType, textoLongo, CentralizarForm, itens);
             if (frm.ShowDialog() == DialogResult.OK)
                 return frm.txt.Text;
             else
                 return string.Empty;
         }
-        public static string ImputBox(out DialogResult dialogResult, string message = "", string titulo = "", string textoImputPadrao = "",
+        public static string InputBox(out DialogResult dialogResult, string message = "", string titulo = "", string textoImputPadrao = "",
              LmValueType lmValueType = LmValueType.Alfanumerico, bool textoLongo = false, bool CentralizarForm = false)
         {
-            LmImputBox frm = new LmImputBox(message, titulo, textoImputPadrao, lmValueType, textoLongo, CentralizarForm);
+            LmInputBox frm = new LmInputBox(message, titulo, textoImputPadrao, lmValueType, textoLongo, CentralizarForm, null);
 
             dialogResult = frm.ShowDialog();
 
