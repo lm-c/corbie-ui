@@ -101,13 +101,15 @@ namespace LmCorbieUI {
     }
 
     private void ModernToastForm_MouseEnter(object sender, EventArgs e) {
-      _isMouseOver = true;
+      Toast.PauseAllToasts();
     }
 
     private void ModernToastForm_MouseLeave(object sender, EventArgs e) {
-      _isMouseOver = false;
+      Toast.ResumeAllToasts();
     }
-
+    public void SetMouseOver(bool isMouseOver) {
+      _isMouseOver = isMouseOver;
+    }
     private void BtnClose_Click(object sender, System.EventArgs e) {
       this.Close();
     }

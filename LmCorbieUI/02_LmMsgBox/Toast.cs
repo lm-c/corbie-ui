@@ -56,6 +56,18 @@ namespace LmCorbieUI {
       ShowToast(toast);
     }
 
+    public static void PauseAllToasts() {
+      foreach (var activeToast in activeToasts.Where(t => !t.IsDisposed && t.Visible)) {
+        activeToast.SetMouseOver(true);
+      }
+    }
+
+    public static void ResumeAllToasts() {
+      foreach (var activeToast in activeToasts.Where(t => !t.IsDisposed && t.Visible)) {
+        activeToast.SetMouseOver(false);
+      }
+    }
+
     private static void ShowToast(FrmToastForm toast) {
       // Remove toasts que já foram fechados da lista
       activeToasts.RemoveAll(t => t.IsDisposed || !t.Visible);
