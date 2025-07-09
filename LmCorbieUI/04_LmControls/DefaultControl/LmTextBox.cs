@@ -733,12 +733,12 @@ namespace LmCorbieUI.Controls {
         e.SuppressKeyPress = true;
         if (SupressAutoLeaveEvent) return;
 
-        ((Form)frm).SelectNextControl(((Form)frm).ActiveControl, true, true, true, true);
+        ((Form)frm).SelectNextControl(this, true, true, true, true);
       } else if (e.KeyCode == Keys.Up && this.Multiline == false) {
         e.SuppressKeyPress = true;
         if (SupressAutoLeaveEvent) return;
 
-        ((Form)frm).SelectNextControl(((Form)frm).ActiveControl, false, true, true, true);
+        ((Form)frm).SelectNextControl(this, false, true, true, true);
       } else if (e.KeyCode == Keys.F7 && _showbuttonF7) {
         //if (!ReadOnly)
         _buttonF7_Click(this, e);

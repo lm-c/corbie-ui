@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace LmCorbieUI {
   public partial class LmInputBox : LmSingleForm {
-    public LmInputBox(string message, string titulo, string texto, LmValueType lmValueType, bool textoLongo, bool Centralizar, List<DefaultObject> itens) {
+    public LmInputBox(string message, string titulo, string texto, LmValueType lmValueType, bool textoLongo, bool Centralizar, bool somenteLeitura, List<DefaultObject> itens) {
       InitializeComponent();
       this.Text = titulo;
 
@@ -68,6 +68,8 @@ namespace LmCorbieUI {
       } else {
         this.StartPosition = FormStartPosition.CenterScreen;
       }
+
+      txt.ReadOnly = somenteLeitura;
     }
 
     private void Txt_ButtonClickF7(object sender, EventArgs e) {

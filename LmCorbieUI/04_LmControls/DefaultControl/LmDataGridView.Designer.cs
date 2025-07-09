@@ -361,7 +361,6 @@ namespace LmCorbieUI.Controls
         private System.Windows.Forms.PictureBox lnkCsv;
         private System.Windows.Forms.PictureBox lnkPdf;
         private System.Windows.Forms.PictureBox lnkColunas;
-        private LmTextBox txtProcurar;
         private LmLabel lmDivisor;
         private System.Windows.Forms.PictureBox lnkResraurarGrid;
         private LmLabel lblSep3;
@@ -370,5 +369,6 @@ namespace LmCorbieUI.Controls
         private System.Windows.Forms.Timer tmrInicioLocalizar;
         private System.Windows.Forms.Timer tmrInternal;
     public LmPanelFlow flpRodape;
+    public LmTextBox txtProcurar;
   }
 }
