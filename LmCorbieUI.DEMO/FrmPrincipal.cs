@@ -82,8 +82,7 @@ namespace LmCorbieUI.DEMO {
         await Task.Delay(5000);
 
         if (!Loader._isWorking) {
-          MsgBox.Show("Operação cancelada pelo usuário.",
-            "Cancelamento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          Toast.Info("Operação cancelada pelo usuário.");
           return;
         }
 
@@ -98,8 +97,7 @@ namespace LmCorbieUI.DEMO {
             var total = 8;
             for (int i = 0; i <= total; i += 1) {
               if (!Loader._isWorking) {
-                MsgBox.Show("Operação cancelada pelo usuário.",
-                  "Cancelamento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Toast.Info("Operação cancelada pelo usuário.");
                 return "Cancelado";
               }
               progress.Report(($"Baixando arquivo... {i}", i, total));
@@ -122,8 +120,7 @@ namespace LmCorbieUI.DEMO {
         await Task.Delay(4000);
 
         if (!Loader._isWorking) {
-          MsgBox.Show("Operação cancelada pelo usuário.",
-            "Cancelamento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          Toast.Info("Operação cancelada pelo usuário.");
           return;
         }
 
@@ -137,12 +134,11 @@ namespace LmCorbieUI.DEMO {
           async (progress) => {
             for (int i = 0; i <= 1000; i++) {
               if (!Loader._isWorking) {
-                MsgBox.Show("Operação cancelada pelo usuário.",
-                  "Cancelamento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Toast.Info("Operação cancelada pelo usuário.");
                 return "Cancelado";
               }
 
-              progress.Report(($"Processando item {i}", i, 1000));
+                progress.Report(($"Processando item {i}", i, 1000));
               await Task.Delay(10); // Muito rápido
             }
             return "Teste concluído";
@@ -165,7 +161,7 @@ namespace LmCorbieUI.DEMO {
           throw new Exception("Erro simulado para teste");
         });
       } catch (Exception ex) {
-        MsgBox.Show($"Erro capturado: {ex.Message}", "Teste de Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        Toast.Error($"Erro capturado: {ex.Message}");
       }
 
       // Teste 6: Teste de Cancelamento Manual
@@ -184,7 +180,7 @@ namespace LmCorbieUI.DEMO {
           timer.Stop();
           timer.Dispose();
           Loader.Hide();
-          MsgBox.Show("Operação manual concluída!", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          Toast.Info("Operação manual concluída!");
         }
       };
 
@@ -195,8 +191,7 @@ namespace LmCorbieUI.DEMO {
 
       for (int i = 0; i <= 100; i += 5) {
         if (!Loader._isWorking) {
-          MsgBox.Show("Operação cancelada pelo usuário.",
-            "Cancelamento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+          Toast.Info("Operação cancelada pelo usuário.");
           return;
         }
         await Task.Delay(200);
@@ -215,8 +210,7 @@ namespace LmCorbieUI.DEMO {
 
           while (downloaded < totalSize) {
             if (!Loader._isWorking) {
-              MsgBox.Show("Operação cancelada pelo usuário.",
-                "Cancelamento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+              Toast.Info("Operação cancelada pelo usuário.");
               return "Cancelado";
             }
             // Simular velocidade variável
