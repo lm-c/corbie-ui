@@ -1,7 +1,9 @@
 ﻿using LmCorbieUI;
 using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace LmCorbieUI {
   public partial class FrmLoadForm : Form {
@@ -15,6 +17,7 @@ namespace LmCorbieUI {
     private string _progressText = "";
 
     public FrmLoadForm(string message, Color backColor, Color foreColor, Image icon) {
+
       InitializeComponent();
 
       _foreColor = foreColor;
@@ -50,7 +53,7 @@ namespace LmCorbieUI {
     }
 
     private void AnimationTimer_Tick(object sender, EventArgs e) {
-      if (!_isWorking || this.IsDisposed) {
+      if (!_isWorking || !Loader._isWorking || this.IsDisposed) {
         StopAnimation();
         return;
       }
@@ -217,6 +220,7 @@ namespace LmCorbieUI {
 
     private void BtnClose_Click(object sender, EventArgs e) {
       _isWorking = false;
+      Loader._isWorking = false;
       StopAnimation();
       this.Close();
     }

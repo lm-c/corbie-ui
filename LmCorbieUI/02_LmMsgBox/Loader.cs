@@ -7,6 +7,7 @@ namespace LmCorbieUI {
   public class Loader {
     private static FrmLoadForm activeLoader = null;
     private static readonly object lockObject = new object();
+    public static bool _isWorking = true;
 
     // método para mostrar com progresso indeterminado
     public static void Show(string message) {
@@ -24,6 +25,7 @@ namespace LmCorbieUI {
         if (activeLoader != null && !activeLoader.IsDisposed && activeLoader.Visible) {
           activeLoader.SetMessage(message);
         } else {
+          _isWorking = true; // Resetar para true quando mostrar
           FrmLoadForm loader = new FrmLoadForm(message, backColor, foreColor, icon);
           ShowLoader(loader);
         }
@@ -46,6 +48,7 @@ namespace LmCorbieUI {
           activeLoader.SetMessage(message);
           activeLoader.SetProgress(currentValue, maxValue, customProgressText);
         } else {
+          _isWorking = true;
           FrmLoadForm loader = new FrmLoadForm(message, backColor, foreColor, icon);
           loader.SetProgress(currentValue, maxValue, customProgressText);
           ShowLoader(loader);
@@ -81,6 +84,12 @@ namespace LmCorbieUI {
       }
     }
 
+    // Método para cancelar operações
+    public static void Cancel() {
+      _isWorking = false;
+      Hide();
+    }
+
     private static void ShowLoader(FrmLoadForm frmLoader) {
       GetPosition(frmLoader);
       activeLoader = frmLoader;
@@ -109,7 +118,9 @@ namespace LmCorbieUI {
         int totalSteps) {
 
       var progress = new Progress<(string message, int current, int max)>(update => {
-        Show(update.message, update.current, update.max);
+        if (_isWorking) {
+          Show(update.message, update.current, update.max);
+        }
       });
 
       try {
@@ -122,7 +133,11 @@ namespace LmCorbieUI {
 
     // Método original para progresso indeterminado
     public static async Task ShowDuringOperation(Func<IProgress<string>, Task> operation) {
-      var progress = new Progress<string>(message => Show(message));
+      var progress = new Progress<string>(message => {
+        if (_isWorking) {
+          Show(message);
+        }
+      });
 
       try {
         Show("Iniciando...");
