@@ -67,5 +67,31 @@ namespace LmCorbieUI.DEMO {
         break;
       }
     }
+
+    private void menuSequenciaCad_Click(object sender, EventArgs e) {
+      NewMethod();
+    }
+
+    private static async Task NewMethod() {
+      await Loader.ShowDuringOperation(async (progress) => {
+        progress.Report("Bem Vindo ao LmCorbieUI");
+        await Task.Delay(2000);
+
+        progress.Report("Iniciando contador");
+        await Task.Delay(2000);
+
+        progress.Report("Contador 1");
+        await Task.Delay(2000);
+
+        progress.Report("Contador 2");
+        await Task.Delay(2000);
+        
+        progress.Report("Este é um exemplo de uma mensagem muito, grande, e também mais demorada vamos ver o que acontece aqui!");
+        await Task.Delay(5000);
+
+        progress.Report("Contador Fim");
+        await Task.Delay(2000);
+      });
+    }
   }
 }

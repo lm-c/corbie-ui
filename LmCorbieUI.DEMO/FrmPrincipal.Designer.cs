@@ -107,7 +107,7 @@
       this.menuProcessoCad.Size = new System.Drawing.Size(193, 30);
       this.menuProcessoCad.TabIndex = 11;
       this.menuProcessoCad.TabStop = false;
-      this.menuProcessoCad.Text = "   Cadastro de Processo";
+      this.menuProcessoCad.Text = "   Testes de ToastMsg";
       this.menuProcessoCad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.menuProcessoCad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
       this.menuProcessoCad.UseSelectable = true;
@@ -125,11 +125,12 @@
       this.menuSequenciaCad.Size = new System.Drawing.Size(193, 30);
       this.menuSequenciaCad.TabIndex = 12;
       this.menuSequenciaCad.TabStop = false;
-      this.menuSequenciaCad.Text = "   Cadastro de Sequência";
+      this.menuSequenciaCad.Text = "   Teste de LoaderMsg";
       this.menuSequenciaCad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.menuSequenciaCad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
       this.menuSequenciaCad.UseSelectable = true;
       this.menuSequenciaCad.UseVisualStyleBackColor = false;
+      this.menuSequenciaCad.Click += new System.EventHandler(this.menuSequenciaCad_Click);
       // 
       // menuMateriaPrimaCad
       // 

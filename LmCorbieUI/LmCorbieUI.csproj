@@ -102,6 +102,12 @@
     <Compile Include="01_LmForms\LmSingleForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="02_LmMsgBox\FrmLoadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="02_LmMsgBox\FrmLoadForm.Designer.cs">
+      <DependentUpon>FrmLoadForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="02_LmMsgBox\FrmToastForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,7 @@
       <DependentUpon>LmMsgToolTipPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="02_LmMsgBox\MsgBox.cs" />
+    <Compile Include="02_LmMsgBox\Loader.cs" />
     <Compile Include="02_LmMsgBox\Toast.cs" />
     <Compile Include="04_LmControls\DefaultControl\ColunaGridMultiselecao.cs" />
     <Compile Include="04_LmControls\DefaultControl\LmButton.cs">
@@ -330,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="01_LmForms\LmSingleForm.resx">
       <DependentUpon>LmSingleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="02_LmMsgBox\FrmLoadForm.resx">
+      <DependentUpon>FrmLoadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="02_LmMsgBox\FrmToastForm.resx">
       <DependentUpon>FrmToastForm.cs</DependentUpon>

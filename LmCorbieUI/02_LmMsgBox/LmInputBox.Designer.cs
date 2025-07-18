@@ -41,7 +41,7 @@ namespace LmCorbieUI
       // lblTitulo
       // 
       this.lblTitulo.AutoSize = true;
-      this.lblTitulo.Location = new System.Drawing.Point(13, 4);
+      this.lblTitulo.Location = new System.Drawing.Point(15, 5);
       this.lblTitulo.Margin = new System.Windows.Forms.Padding(3);
       this.lblTitulo.Name = "lblTitulo";
       this.lblTitulo.Size = new System.Drawing.Size(64, 19);
@@ -51,7 +51,7 @@ namespace LmCorbieUI
       // lblDesc
       // 
       this.lblDesc.AutoSize = true;
-      this.lblDesc.Location = new System.Drawing.Point(38, 24);
+      this.lblDesc.Location = new System.Drawing.Point(44, 28);
       this.lblDesc.Margin = new System.Windows.Forms.Padding(3);
       this.lblDesc.Name = "lblDesc";
       this.lblDesc.Size = new System.Drawing.Size(64, 19);
@@ -60,13 +60,14 @@ namespace LmCorbieUI
       // 
       // btnCancelar
       // 
+      this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.btnCancelar.BorderColor = System.Drawing.Color.PaleVioletRed;
       this.btnCancelar.BorderRadius = 15;
       this.btnCancelar.BorderSize = 0;
       this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
       this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.btnCancelar.Location = new System.Drawing.Point(181, 75);
+      this.btnCancelar.Location = new System.Drawing.Point(227, 81);
       this.btnCancelar.Name = "btnCancelar";
       this.btnCancelar.Size = new System.Drawing.Size(94, 26);
       this.btnCancelar.TabIndex = 2;
@@ -74,16 +75,18 @@ namespace LmCorbieUI
       this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
       this.btnCancelar.UseVisualStyleBackColor = false;
       this.btnCancelar.Visible = false;
+      this.btnCancelar.Click += new System.EventHandler(this.Txt_ButtonClickF8);
       // 
       // btnConfirmar
       // 
+      this.btnConfirmar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.btnConfirmar.BorderColor = System.Drawing.Color.PaleVioletRed;
       this.btnConfirmar.BorderRadius = 15;
       this.btnConfirmar.BorderSize = 0;
       this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnConfirmar.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirmar.Image")));
       this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.btnConfirmar.Location = new System.Drawing.Point(81, 75);
+      this.btnConfirmar.Location = new System.Drawing.Point(127, 81);
       this.btnConfirmar.Name = "btnConfirmar";
       this.btnConfirmar.Size = new System.Drawing.Size(94, 26);
       this.btnConfirmar.TabIndex = 1;
@@ -91,9 +94,12 @@ namespace LmCorbieUI
       this.btnConfirmar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
       this.btnConfirmar.UseVisualStyleBackColor = false;
       this.btnConfirmar.Visible = false;
+      this.btnConfirmar.Click += new System.EventHandler(this.Txt_ButtonClickF7);
       // 
       // txt
       // 
+      this.txt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
       this.txt.BorderRadius = 14;
       this.txt.BorderSize = 2;
@@ -105,7 +111,7 @@ namespace LmCorbieUI
       this.txt.IconF8 = ((System.Drawing.Image)(resources.GetObject("txt.IconF8")));
       this.txt.IconToolTipText = null;
       this.txt.Lines = new string[0];
-      this.txt.Location = new System.Drawing.Point(38, 42);
+      this.txt.Location = new System.Drawing.Point(44, 46);
       this.txt.MaxLength = 32767;
       this.txt.Name = "txt";
       this.txt.PasswordChar = '\0';
@@ -117,7 +123,7 @@ namespace LmCorbieUI
       this.txt.ShortcutsEnabled = true;
       this.txt.ShowButtonF7 = true;
       this.txt.ShowButtonF8 = true;
-      this.txt.Size = new System.Drawing.Size(237, 29);
+      this.txt.Size = new System.Drawing.Size(277, 29);
       this.txt.TabIndex = 0;
       this.txt.UnderlinedStyle = false;
       this.txt.UseSelectable = true;
@@ -132,7 +138,7 @@ namespace LmCorbieUI
       // LmInputBox
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-      this.ClientSize = new System.Drawing.Size(313, 81);
+      this.ClientSize = new System.Drawing.Size(365, 86);
       this.ControlBox = false;
       this.Controls.Add(this.btnCancelar);
       this.Controls.Add(this.btnConfirmar);
