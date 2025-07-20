@@ -79,34 +79,36 @@ namespace LmCorbieUI.DEMO {
         await Task.Delay(1000);
 
         progress.Report("Processando dados...");
-        await Task.Delay(5000);
+        await Task.Delay(3000);
 
         if (!Loader._isWorking) {
-          Toast.Info("Operação cancelada pelo usuário.");
+          MsgBox.Show("Operação cancelada pelo usuário.","Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
           return;
         }
+
+        // Teste 2: Progresso Determinado com Passos dentro do loader 1
+        await Loader.ShowDuringOperation(
+            "Iniciando download...",
+            async (progress2) => {
+              var total = 8;
+              for (int i = 0; i <= total; i += 1) {
+                if (!Loader._isWorking) {
+                  Toast.Info("Operação cancelada pelo usuário.");
+                  return "Cancelado";
+                }
+                progress2.Report(($"Baixando arquivo... {i}", i, total));
+                await Task.Delay(500);
+              }
+              return "Download concluído";
+            },
+            100
+        );
 
         progress.Report("Finalizando...");
         await Task.Delay(3000);
       });
 
-      // Teste 2: Progresso Determinado com Passos
-      await Loader.ShowDuringOperation(
-          "Iniciando download...",
-          async (progress) => {
-            var total = 8;
-            for (int i = 0; i <= total; i += 1) {
-              if (!Loader._isWorking) {
-                Toast.Info("Operação cancelada pelo usuário.");
-                return "Cancelado";
-              }
-              progress.Report(($"Baixando arquivo... {i}", i, total));
-              await Task.Delay(500);
-            }
-            return "Download concluído";
-          },
-          100
-      );
+
 
       // Teste 3: Mensagens Longas
       await Loader.ShowDuringOperation(async (progress) => {

@@ -39,8 +39,8 @@ namespace LmCorbieUI {
         return;
       }
 
-      var backColor = Color.FromArgb(250, 248, 240);
-      var foreColor = Color.FromArgb(20, 22, 30);
+      var backColor = Color.FromArgb(33, 150, 243);
+      var foreColor = Color.FromArgb(250, 248, 240);
       var icon = new Bitmap(15, 15);
 
       lock (lockObject) {

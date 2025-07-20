@@ -242,6 +242,7 @@ namespace LmCorbieUI
       this.Location = new System.Drawing.Point(0, 0);
       this.Name = "LmMsgBox";
       this.ShowInTaskbar = false;
+      this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
       this.Text = "LmMsgBox";
       this.TopMost = true;
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LmMsgBox_KeyDown);

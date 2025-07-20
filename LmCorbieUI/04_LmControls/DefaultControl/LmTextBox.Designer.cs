@@ -1,34 +1,60 @@
 ﻿
-namespace LmCorbieUI.Controls
-{
-    partial class LmTextBox
-    {
-        /// <summary> 
-        /// Variável de designer necessária.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+namespace LmCorbieUI.Controls {
+  partial class LmTextBox {
+    /// <summary> 
+    /// Variável de designer necessária.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Limpar os recursos que estão sendo usados.
-        /// </summary>
-        /// <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
+    /// <summary> 
+    /// Limpar os recursos que estão sendo usados.
+    /// </summary>
+    /// <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
+    protected override void Dispose(bool disposing) {
+      if (disposing) {
+        // Dispose dos recursos gerenciados
+        if (components != null) {
+          components.Dispose();
         }
 
-        #region Código gerado pelo Designer de Componentes
+        // Dispose das fontes e imagens customizadas
+        _waterMarkFont?.Dispose();
 
-        /// <summary> 
-        /// Método necessário para suporte ao Designer - não modifique 
-        /// o conteúdo deste método com o editor de código.
-        /// </summary>
-        private void InitializeComponent()
-        {
+        // Não dispose das imagens das propriedades pois podem ser reutilizadas
+        // textBoxIcon, iconF7, iconF8, iconF9 - deixar para o usuário gerenciar
+
+        // Remover event handlers para evitar memory leaks
+        if (baseTextBox != null) {
+          baseTextBox.AcceptsTabChanged -= BaseTextBoxAcceptsTabChanged;
+          baseTextBox.Click -= BaseTextBoxClick;
+          baseTextBox.TextChanged -= BaseTextBoxTextChanged;
+          baseTextBox.KeyDown -= BaseTextBoxKeyDown;
+          baseTextBox.KeyPress -= BaseTextBoxKeyPress;
+          baseTextBox.KeyUp -= BaseTextBoxKeyUp;
+          baseTextBox.Enter -= baseTextBox_Enter;
+          baseTextBox.Leave -= baseTextBox_Leave;
+          baseTextBox.MouseEnter -= BaseTextBox_MouseEnter;
+          baseTextBox.MouseLeave -= BaseTextBox_MouseLeave;
+          baseTextBox.MouseHover -= BaseTextBox_MouseHover;
+          baseTextBox.PreviewKeyDown -= BaseTextBox_PreviewKeyDown;
+        }
+
+        if (CmbDados != null) {
+          CmbDados.DataSourceChanged -= CmbDados_DataSourceChanged;
+        }
+      }
+
+      base.Dispose(disposing);
+    }
+
+
+    #region Código gerado pelo Designer de Componentes
+
+    /// <summary> 
+    /// Método necessário para suporte ao Designer - não modifique 
+    /// o conteúdo deste método com o editor de código.
+    /// </summary>
+    private void InitializeComponent() {
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LmTextBox));
       this.baseTextBox = new System.Windows.Forms.TextBox();
@@ -171,16 +197,16 @@ namespace LmCorbieUI.Controls
       this.ResumeLayout(false);
       this.PerformLayout();
 
-        }
-
-        #endregion
-
-        private System.Windows.Forms.TextBox baseTextBox;
-        private System.Windows.Forms.PictureBox ptbIcon;
-        private System.Windows.Forms.PictureBox btnClearButton;
-        private System.Windows.Forms.ToolTip toolTip1;
-        public System.Windows.Forms.PictureBox btnF8;
-        public System.Windows.Forms.PictureBox btnF7;
-        public System.Windows.Forms.PictureBox btnF9;
     }
+
+    #endregion
+
+    private System.Windows.Forms.TextBox baseTextBox;
+    private System.Windows.Forms.PictureBox ptbIcon;
+    private System.Windows.Forms.PictureBox btnClearButton;
+    private System.Windows.Forms.ToolTip toolTip1;
+    public System.Windows.Forms.PictureBox btnF8;
+    public System.Windows.Forms.PictureBox btnF7;
+    public System.Windows.Forms.PictureBox btnF9;
+  }
 }

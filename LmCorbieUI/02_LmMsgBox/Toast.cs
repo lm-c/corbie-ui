@@ -103,17 +103,21 @@ namespace LmCorbieUI {
 
     private static void RepositionToasts() {
       // Reposiciona todos os toasts ativos quando um é removido
-      Point mousePosition = Cursor.Position;
-      Screen currentScreen = Screen.FromPoint(mousePosition);
+      try {
+        Point mousePosition = Cursor.Position;
+        Screen currentScreen = Screen.FromPoint(mousePosition);
 
-      int yOffset = 10;
+        int yOffset = 10;
 
-      foreach (var activeToast in activeToasts.Where(t => !t.IsDisposed && t.Visible)) {
-        activeToast.Location = new Point(
-          currentScreen.WorkingArea.Right - activeToast.Width - 10,
-          currentScreen.WorkingArea.Top + yOffset
-        );
-        yOffset += activeToast.Height + 5;
+        foreach (var activeToast in activeToasts.Where(t => !t.IsDisposed && t.Visible)) {
+          activeToast.Location = new Point(
+            currentScreen.WorkingArea.Right - activeToast.Width - 10,
+            currentScreen.WorkingArea.Top + yOffset
+          );
+          yOffset += activeToast.Height + 5;
+        }
+      } catch (System.Exception) {
+
       }
     }
   }

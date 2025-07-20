@@ -146,6 +146,7 @@
     </Compile>
     <Compile Include="02_LmMsgBox\MsgBox.cs" />
     <Compile Include="02_LmMsgBox\Loader.cs" />
+    <Compile Include="02_LmMsgBox\ScreenHelper.cs" />
     <Compile Include="02_LmMsgBox\Toast.cs" />
     <Compile Include="04_LmControls\DefaultControl\ColunaGridMultiselecao.cs" />
     <Compile Include="04_LmControls\DefaultControl\LmButton.cs">
