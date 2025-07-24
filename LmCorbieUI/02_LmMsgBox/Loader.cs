@@ -93,6 +93,7 @@ namespace LmCorbieUI {
     private static void ShowLoader(FrmLoadForm frmLoader) {
       GetPosition(frmLoader);
       activeLoader = frmLoader;
+      frmLoader.RecenterForm();
       frmLoader.Show();
       frmLoader.BringToFront();
     }

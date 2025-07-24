@@ -270,6 +270,7 @@
     <Compile Include="09_Metodos\Outros\Entidade.cs" />
     <Compile Include="09_Metodos\Outros\LmException.cs" />
     <Compile Include="09_Metodos\Outros\Web.cs" />
+    <Compile Include="09_Metodos\Outros\UIThreadHelper.cs" />
     <Compile Include="77_Global\DefaultList.cs" />
     <Compile Include="77_Global\ValPadrao.cs" />
     <Compile Include="99_Configuracao\InfoDefaultUI.cs" />

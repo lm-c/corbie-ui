@@ -20,6 +20,8 @@ namespace LmCorbieUI {
 
       InitializeComponent();
 
+      this.Opacity = 0.9;
+
       _foreColor = foreColor;
       this.BackColor = backColor;
       this.TopMost = true;
@@ -38,6 +40,7 @@ namespace LmCorbieUI {
       SetupProgressPanel(backColor, foreColor);
       AdjustFormSize();
       StartAnimation(); // Iniciar animação uma única vez
+      RecenterForm();
     }
 
     private void StartAnimation() {
@@ -167,13 +170,13 @@ namespace LmCorbieUI {
       this.Refresh();
     }
 
-    private void RecenterForm() {
+    internal void RecenterForm() {
       Screen currentScreen = Screen.FromPoint(this.Location);
       Rectangle workingArea = currentScreen.WorkingArea;
 
       this.Location = new Point(
-          currentScreen.WorkingArea.Left + (currentScreen.WorkingArea.Width - this.Width) / 2,
-          currentScreen.WorkingArea.Top + (currentScreen.WorkingArea.Height - this.Height) / 2
+          workingArea.Right - this.Width - 10,  // 10px de margem da borda direita
+          workingArea.Bottom - this.Height - 10 // 10px de margem da borda inferior
       );
     }
 
