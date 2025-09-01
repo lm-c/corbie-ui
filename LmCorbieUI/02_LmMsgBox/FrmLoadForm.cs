@@ -20,7 +20,7 @@ namespace LmCorbieUI {
 
       InitializeComponent();
 
-      this.Opacity = 0.9;
+      this.Opacity = 0.95;
 
       _foreColor = foreColor;
       this.BackColor = backColor;
@@ -123,37 +123,43 @@ namespace LmCorbieUI {
       float percentage = (float)_currentProgressValue / _maxProgressValue;
       int progressWidth = (int)(percentage * panel.Width);
 
-      // Desenhar barra de progresso
-      using (SolidBrush progressBrush = new SolidBrush(Color.FromArgb(150, _foreColor))) {
+      // Fundo da barra (a parte "vazia")
+      using (SolidBrush backgroundBrush = new SolidBrush(Color.FromArgb(18, 36, 48))) {
+        g.FillRectangle(backgroundBrush, 0, 0, panel.Width, panel.Height);
+      }
+
+      // Progresso preenchido (verde vibrante)
+      using (SolidBrush progressBrush = new SolidBrush(Color.FromArgb(29, 69, 31))) {
         g.FillRectangle(progressBrush, 0, 0, progressWidth, panel.Height);
       }
 
-      // Desenhar texto de porcentagem
+      // Desenhar texto de porcentagem (sempre branco)
       if (!string.IsNullOrEmpty(_progressText)) {
-        using (SolidBrush textBrush = new SolidBrush(_foreColor)) {
-          using (Font font = new Font("Segoe UI", 8, FontStyle.Bold)) {
-            SizeF textSize = g.MeasureString(_progressText, font);
-            float textX = (panel.Width - textSize.Width) / 2;
-            float textY = (panel.Height - textSize.Height) / 2;
+        using (Font font = new Font("Segoe UI", 9, FontStyle.Bold)) {
+          SizeF textSize = g.MeasureString(_progressText, font);
+          float textX = (panel.Width - textSize.Width) / 2;
+          float textY = (panel.Height - textSize.Height) / 2;
 
-            // Desenhar sombra do texto
-            using (SolidBrush shadowBrush = new SolidBrush(Color.FromArgb(100, Color.Black))) {
-              g.DrawString(_progressText, font, shadowBrush, textX + 1, textY + 1);
-            }
+          // Sombra
+          using (SolidBrush shadowBrush = new SolidBrush(Color.FromArgb(200, Color.Black))) {
+            g.DrawString(_progressText, font, shadowBrush, textX + 1, textY + 1);
+          }
 
-            // Desenhar texto principal
+          // Texto branco
+          using (SolidBrush textBrush = new SolidBrush(Color.White)) {
             g.DrawString(_progressText, font, textBrush, textX, textY);
           }
         }
       }
     }
 
+
     private void DrawIndeterminateProgress(Graphics g, Panel panel) {
       int progressWidth = (int)(panel.Width * 0.3f);
       float normalizedPosition = (float)(Math.Sin(_animationOffset) + 1) / 2;
       int position = (int)(normalizedPosition * (panel.Width - progressWidth));
-
-      using (SolidBrush progressBrush = new SolidBrush(Color.FromArgb(150, _foreColor))) {
+      var corProgress = Color.FromArgb(29, 69, 31);
+      using (SolidBrush progressBrush = new SolidBrush(Color.FromArgb(200, corProgress))) {
         g.FillRectangle(progressBrush, position, 0, progressWidth, panel.Height);
       }
     }

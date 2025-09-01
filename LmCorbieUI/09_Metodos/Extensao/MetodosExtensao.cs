@@ -367,7 +367,7 @@ namespace LmCorbieUI {
           m = 0;
         }
 
-        return h.ToString("00") + ":" + m.ToString("00");
+        return $"{h:00}:{m:00}";
       } else {
         hora *= -1;
 
@@ -379,7 +379,7 @@ namespace LmCorbieUI {
           m = 0;
         }
 
-        return "-" + h.ToString("00") + ":" + m.ToString("00");
+        return $"-{h:00}:{m:00}";
       }
     }
 
@@ -389,18 +389,22 @@ namespace LmCorbieUI {
     /// <param name="hora">hora com formato padrão</param>
     /// <returns></returns>
     public static double FormatarHoraDouble(this string hora) {
-      hora = hora.FormatarHora(/*true*/);
+      if (string.IsNullOrWhiteSpace(hora))
+        return 0;
 
-      if (hora.Contains(":")) {
-        string[] hm = hora.Split(':');
+      bool negativo = hora.StartsWith("-");
+      if (negativo)
+        hora = hora.Substring(1); // remove o sinal para cálculo
 
-        short h = Convert.ToInt16(hm[0]);
-        short m = Convert.ToInt16(hm[1]);
+      string[] partes = hora.Split(':');
+      if (partes.Length < 2)
+        return 0; // formato inválido
 
-        return h + ((double)m / 60);
-      }
+      if (!int.TryParse(partes[0], out int h)) h = 0;
+      if (!int.TryParse(partes[1], out int m)) m = 0;
 
-      return 0;
+      double resultado = h + (m / 60.0);
+      return negativo ? -resultado : resultado;
     }
 
     /// <summary>

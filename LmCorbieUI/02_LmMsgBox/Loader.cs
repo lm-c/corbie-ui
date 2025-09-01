@@ -9,6 +9,11 @@ namespace LmCorbieUI {
     private static readonly object lockObject = new object();
     public static bool _isWorking = true;
 
+    // Definição de cores principais
+    private static readonly Color PrimaryBackColor = Color.FromArgb(26, 54, 71); // cor solicitada
+    private static readonly Color PrimaryForeColor = Color.FromArgb(245, 245, 245); // texto claro para contraste
+    private static readonly Bitmap DefaultIcon = new Bitmap(15, 15);
+
     // método para mostrar com progresso indeterminado
     public static void Show(string message) {
       if (InvokeRequired()) {
@@ -16,17 +21,12 @@ namespace LmCorbieUI {
         return;
       }
 
-      var backColor = Color.FromArgb(33, 150, 243);
-      var foreColor = Color.FromArgb(250, 248, 240);
-      // var icon = Properties.Resources.toast_info;
-      var icon = new Bitmap(15, 15);
-
       lock (lockObject) {
         if (activeLoader != null && !activeLoader.IsDisposed && activeLoader.Visible) {
           activeLoader.SetMessage(message);
         } else {
           _isWorking = true; // Resetar para true quando mostrar
-          FrmLoadForm loader = new FrmLoadForm(message, backColor, foreColor, icon);
+          FrmLoadForm loader = new FrmLoadForm(message, PrimaryBackColor, PrimaryForeColor, DefaultIcon);
           ShowLoader(loader);
         }
       }
@@ -39,17 +39,13 @@ namespace LmCorbieUI {
         return;
       }
 
-      var backColor = Color.FromArgb(33, 150, 243);
-      var foreColor = Color.FromArgb(250, 248, 240);
-      var icon = new Bitmap(15, 15);
-
       lock (lockObject) {
         if (activeLoader != null && !activeLoader.IsDisposed && activeLoader.Visible) {
           activeLoader.SetMessage(message);
           activeLoader.SetProgress(currentValue, maxValue, customProgressText);
         } else {
           _isWorking = true;
-          FrmLoadForm loader = new FrmLoadForm(message, backColor, foreColor, icon);
+          FrmLoadForm loader = new FrmLoadForm(message, PrimaryBackColor, PrimaryForeColor, DefaultIcon);
           loader.SetProgress(currentValue, maxValue, customProgressText);
           ShowLoader(loader);
         }
