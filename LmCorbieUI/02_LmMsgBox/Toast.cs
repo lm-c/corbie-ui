@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -9,51 +9,63 @@ namespace LmCorbieUI {
     private static List<FrmToastForm> activeToasts = new List<FrmToastForm>();
 
     public static void Show(string message) {
-      var backColor = Color.FromArgb(250, 248, 240);
-      var foreColor = Color.FromArgb(20, 22, 30);
-      var icon = new Bitmap(15, 15);
-      FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
-      ShowToast(toast);
+      EnsureUIThread(() => {
+        var backColor = Color.FromArgb(250, 248, 240);
+        var foreColor = Color.FromArgb(20, 22, 30);
+        var icon = new Bitmap(15, 15);
+        FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
+        ShowToast(toast);
+      });
     }
 
     public static void Success(string message) {
-      var backColor = Color.FromArgb(76, 175, 80);
-      var foreColor = Color.FromArgb(250, 248, 240);
-      var icon = Properties.Resources.toast_sucess;
-      FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
-      ShowToast(toast);
+      EnsureUIThread(() => {
+        var backColor = Color.FromArgb(76, 175, 80);
+        var foreColor = Color.FromArgb(250, 248, 240);
+        var icon = Properties.Resources.toast_sucess;
+        FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
+        ShowToast(toast);
+      });
     }
 
     public static void Info(string message) {
-      var backColor = Color.FromArgb(33, 150, 243);
-      var foreColor = Color.FromArgb(250, 248, 240);
-      var icon = Properties.Resources.toast_info;
-      FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
-      ShowToast(toast);
+      EnsureUIThread(() => {
+        var backColor = Color.FromArgb(33, 150, 243);
+        var foreColor = Color.FromArgb(250, 248, 240);
+        var icon = Properties.Resources.toast_info;
+        FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
+        ShowToast(toast);
+      });
     }
 
     public static void Warning(string message) {
-      var backColor = Color.FromArgb(255, 152, 0);
-      var foreColor = Color.FromArgb(250, 248, 240);
-      var icon = Properties.Resources.toast_warning;
-      FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
-      ShowToast(toast);
+      EnsureUIThread(() => {
+        var backColor = Color.FromArgb(255, 152, 0);
+        var foreColor = Color.FromArgb(250, 248, 240);
+        var icon = Properties.Resources.toast_warning;
+        FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
+        ShowToast(toast);
+      });
     }
 
     public static void Error(string message) {
-      var backColor = Color.FromArgb(244, 67, 54);
-      var foreColor = Color.FromArgb(250, 248, 240);
-      var icon = Properties.Resources.toast_error;
-      FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
-      ShowToast(toast);
+      EnsureUIThread(() => {
+        var backColor = Color.FromArgb(244, 67, 54);
+        var foreColor = Color.FromArgb(250, 248, 240);
+        var icon = Properties.Resources.toast_error;
+        FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
+        ShowToast(toast);
+      });
     }
 
     public static void Black(string message) {
-      var backColor = Color.FromArgb(50, 48, 40);
-      var foreColor = Color.FromArgb(250, 248, 240);
-      var icon = new Bitmap(15, 15);
-      FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
-      ShowToast(toast);
+      EnsureUIThread(() => {
+        var backColor = Color.FromArgb(50, 48, 40);
+        var foreColor = Color.FromArgb(250, 248, 240);
+        var icon = new Bitmap(15, 15);
+        FrmToastForm toast = new FrmToastForm(message, backColor, foreColor, icon);
+        ShowToast(toast);
+      });
     }
 
     public static void PauseAllToasts() {
@@ -118,6 +130,22 @@ namespace LmCorbieUI {
         }
       } catch (System.Exception) {
 
+      }
+    }
+
+    /// <summary>
+    /// Garante que a ação seja executada na UI thread
+    /// </summary>
+    /// <param name="action">Ação a ser executada</param>
+    private static void EnsureUIThread(System.Action action) {
+      // Verifica se há algum form aberto para usar como referência
+      if (Application.OpenForms.Count > 0) {
+        var mainForm = Application.OpenForms[0];
+        UIThreadHelper.Invoke(mainForm, action);
+      } else {
+        // Se não há forms abertos, executa diretamente
+        // (provavelmente já estamos na UI thread)
+        action();
       }
     }
   }
